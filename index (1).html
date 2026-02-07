@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌹🐱 Happy Rose Day, Vanu!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;1,400&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0002;
+            overflow-x: hidden;
+            font-family: 'Lora', serif;
+            color: #ffeef0;
+            min-height: 100vh;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><text y='18' font-size='18'>🐾</text></svg>"), auto;
+        }
+
+        /* Floating Paw Prints */
+        .paw {
+            position: fixed;
+            font-size: 20px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+            animation: fallPaw linear infinite;
+        }
+
+        @keyframes fallPaw {
+            0% {
+                opacity: 0;
+                transform: translateY(-10vh) rotate(0deg) scale(0.6);
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(105vh) rotate(360deg) scale(0.3);
+            }
+        }
+
+        /* Rose petals too */
+        .petal {
+            position: fixed;
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(ellipse at center, #e74c6f 0%, #c0392b 60%, transparent 100%);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+            animation: fallPaw linear infinite;
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            animation: twinkle ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Background Glows */
+        .bg-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.12;
+            z-index: 0;
+            animation: floatGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, -30px) scale(1.2); }
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px 60px;
+            text-align: center;
+        }
+
+        /* Cat Ears on top */
+        .cat-ears-header {
+            position: relative;
+            margin-bottom: 10px;
+            animation: fadeInUp 1.2s ease-out 0.2s both;
+        }
+
+        .cat-ears-header svg {
+            width: 100px;
+            height: 50px;
+            filter: drop-shadow(0 0 15px rgba(231, 76, 111, 0.5));
+        }
+
+        /* Title */
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: #e74c6f;
+            text-shadow: 0 0 40px rgba(231, 76, 111, 0.5), 0 0 80px rgba(231, 76, 111, 0.3);
+            margin-bottom: 8px;
+            animation: fadeInUp 1.2s ease-out 0.4s both;
+        }
+
+        .subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: #f5a0b1;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            animation: fadeInUp 1.2s ease-out 0.6s both;
+        }
+
+        .cat-label {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            color: rgba(245, 160, 177, 0.6);
+            margin-bottom: 40px;
+            animation: fadeInUp 1.2s ease-out 0.8s both;
+        }
+
+        /* Kitten Gallery */
+        .kitten-gallery {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 45px;
+            max-width: 700px;
+            animation: fadeInUp 1.2s ease-out 1s both;
+        }
+
+        .kitten-card {
+            width: clamp(130px, 28vw, 180px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid rgba(231, 76, 111, 0.2);
+            background: rgba(231, 76, 111, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .kitten-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            border-color: rgba(231, 76, 111, 0.5);
+            box-shadow: 0 15px 40px rgba(231, 76, 111, 0.2);
+        }
+
+        .kitten-card img {
+            width: 100%;
+            height: clamp(130px, 28vw, 180px);
+            object-fit: cover;
+            display: block;
+        }
+
+        .kitten-card .caption {
+            padding: 8px 10px;
+            font-family: 'Caveat', cursive;
+            font-size: 0.95rem;
+            color: #f5a0b1;
+            text-align: center;
+        }
+
+        /* Message Card */
+        .message-card {
+            max-width: 600px;
+            background: linear-gradient(135deg, rgba(231, 76, 111, 0.07) 0%, rgba(192, 57, 43, 0.04) 100%);
+            border: 1px solid rgba(231, 76, 111, 0.15);
+            border-radius: 24px;
+            padding: 40px 35px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1.2s ease-out 1.2s both;
+        }
+
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(231, 76, 111, 0.3), transparent, rgba(231, 76, 111, 0.1));
+            z-index: -1;
+            animation: borderGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes borderGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Cat paw decorations on card corners */
+        .message-card::after {
+            content: '🐾';
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            font-size: 1.2rem;
+            opacity: 0.3;
+            animation: gentlePulse 3s ease-in-out infinite;
+        }
+
+        .dear {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: #e74c6f;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            font-family: 'Lora', serif;
+            font-size: clamp(0.92rem, 2.5vw, 1.05rem);
+            line-height: 1.95;
+            color: #ffd5dc;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .message .highlight {
+            color: #e74c6f;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .from {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: #e74c6f;
+            text-shadow: 0 0 20px rgba(231, 76, 111, 0.4);
+        }
+
+        /* Cat Divider */
+        .cat-divider {
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: fadeInUp 1.2s ease-out 1.4s both;
+        }
+
+        .cat-divider .line {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e74c6f, transparent);
+        }
+
+        .cat-divider .cat-face {
+            font-size: 1.8rem;
+            animation: headTilt 3s ease-in-out infinite;
+        }
+
+        @keyframes headTilt {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        /* Photo Section */
+        .photo-section {
+            animation: fadeInUp 1.2s ease-out 1.6s both;
+            margin-bottom: 10px;
+        }
+
+        .photo-section-title {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            color: #f5a0b1;
+            margin-bottom: 20px;
+        }
+
+        .photo-frame {
+            width: clamp(200px, 55vw, 280px);
+            height: clamp(200px, 55vw, 280px);
+            border-radius: 50%;
+            border: 3px solid rgba(231, 76, 111, 0.35);
+            padding: 5px;
+            background: linear-gradient(135deg, rgba(231, 76, 111, 0.15), rgba(192, 57, 43, 0.08));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: photoGlow 4s ease-in-out infinite alternate;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        @keyframes photoGlow {
+            0% { box-shadow: 0 0 20px rgba(231, 76, 111, 0.15); }
+            100% { box-shadow: 0 0 50px rgba(231, 76, 111, 0.35); }
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .photo-placeholder {
+            color: rgba(231, 76, 111, 0.4);
+            font-family: 'Caveat', cursive;
+            font-size: 1rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Cat ear decorations on photo frame */
+        .photo-frame::before, .photo-frame::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(231, 76, 111, 0.2);
+            border: 2px solid rgba(231, 76, 111, 0.3);
+            top: -8px;
+            z-index: 5;
+        }
+
+        .photo-frame::before {
+            left: 35px;
+            border-radius: 50% 0 50% 0;
+            transform: rotate(-10deg);
+        }
+
+        .photo-frame::after {
+            right: 35px;
+            border-radius: 0 50% 0 50%;
+            transform: rotate(10deg);
+        }
+
+        /* More kittens row */
+        .kitten-row-2 {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 40px auto;
+            max-width: 750px;
+            animation: fadeInUp 1.2s ease-out 1.8s both;
+        }
+
+        .kitten-round {
+            width: clamp(90px, 20vw, 120px);
+            height: clamp(90px, 20vw, 120px);
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(231, 76, 111, 0.25);
+            transition: all 0.4s ease;
+        }
+
+        .kitten-round:hover {
+            transform: scale(1.15) rotate(5deg);
+            border-color: rgba(231, 76, 111, 0.6);
+            box-shadow: 0 0 30px rgba(231, 76, 111, 0.3);
+        }
+
+        .kitten-round img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Heartbeat line */
+        .heartbeat-line {
+            margin: 35px auto;
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e74c6f, transparent);
+            animation: fadeInUp 1.2s ease-out 2s both;
+            position: relative;
+        }
+
+        .heartbeat-line::after {
+            content: '♥';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            color: #e74c6f;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            14% { transform: translate(-50%, -50%) scale(1.3); }
+            28% { transform: translate(-50%, -50%) scale(1); }
+            42% { transform: translate(-50%, -50%) scale(1.3); }
+            70% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* Bottom section */
+        .bottom-section {
+            animation: fadeInUp 1.2s ease-out 2.2s both;
+            max-width: 500px;
+        }
+
+        .bottom-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            color: rgba(245, 160, 177, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .cat-footer {
+            font-size: 1.5rem;
+            letter-spacing: 8px;
+            opacity: 0.5;
+            animation: gentlePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Day badge */
+        .day-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-family: 'Caveat', cursive;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: rgba(231, 76, 111, 0.4);
+            writing-mode: vertical-rl;
+            z-index: 100;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Walking cat at bottom */
+        .walking-cat {
+            position: fixed;
+            bottom: 15px;
+            font-size: 1.8rem;
+            z-index: 100;
+            animation: walkCat 12s linear infinite;
+            filter: drop-shadow(0 0 8px rgba(231, 76, 111, 0.4));
+        }
+
+        @keyframes walkCat {
+            0% { left: -50px; transform: scaleX(1); }
+            49% { transform: scaleX(1); }
+            50% { left: calc(100% + 50px); transform: scaleX(-1); }
+            99% { transform: scaleX(-1); }
+            100% { left: -50px; transform: scaleX(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .message-card {
+                padding: 30px 22px;
+                margin: 0 10px;
+            }
+            .kitten-gallery {
+                gap: 10px;
+            }
+            .day-badge {
+                font-size: 0.7rem;
+                top: 12px;
+                right: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Glows -->
+    <div class="bg-glow" style="width: 400px; height: 400px; background: #e74c6f; top: -100px; left: -100px;"></div>
+    <div class="bg-glow" style="width: 300px; height: 300px; background: #c0392b; bottom: -50px; right: -50px; animation-delay: 3s;"></div>
+    <div class="bg-glow" style="width: 250px; height: 250px; background: #ff6b8a; top: 50%; left: 50%; animation-delay: 5s;"></div>
+
+    <!-- Day Badge -->
+    <div class="day-badge">7 Feb · Rose Day 🌹</div>
+
+    <!-- Walking Cat -->
+    <div class="walking-cat">🐈</div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Cat Ears Header -->
+        <div class="cat-ears-header">
+            <svg viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 45 L5 10 Q3 5 8 8 L30 40 Z" fill="#e74c6f" opacity="0.6">
+                    <animate attributeName="opacity" values="0.6;0.8;0.6" dur="3s" repeatCount="indefinite"/>
+                </path>
+                <path d="M105 45 L115 10 Q117 5 112 8 L90 40 Z" fill="#e74c6f" opacity="0.6">
+                    <animate attributeName="opacity" values="0.6;0.8;0.6" dur="3s" repeatCount="indefinite"/>
+                </path>
+                <ellipse cx="12" cy="20" rx="3" ry="5" fill="#ff8fa3" opacity="0.4"/>
+                <ellipse cx="108" cy="20" rx="3" ry="5" fill="#ff8fa3" opacity="0.4"/>
+            </svg>
+        </div>
+
+        <!-- Title -->
+        <h1 class="title">Happy Rose Day, Vanu 🌹</h1>
+        <p class="subtitle">From one cat-o to another 🐱</p>
+        <p class="cat-label">~ a purrfectly romantic page for the purrfect girl ~</p>
+
+        <!-- Kitten Gallery Row 1 -->
+        <div class="kitten-gallery">
+            <div class="kitten-card">
+                <img src="https://cdn.pixabay.com/photo/2024/02/28/07/42/european-shorthair-8601492_640.jpg" alt="Cute kitten" loading="lazy">
+                <div class="caption">us being cozy 🐾</div>
+            </div>
+            <div class="kitten-card">
+                <img src="https://cdn.pixabay.com/photo/2019/11/08/11/36/kittens-4611189_640.jpg" alt="Two kittens together" loading="lazy">
+                <div class="caption">you & me always 💕</div>
+            </div>
+            <div class="kitten-card">
+                <img src="https://cdn.pixabay.com/photo/2023/09/19/12/34/kitten-8262233_640.jpg" alt="Kitten with rose" loading="lazy">
+                <div class="caption">rose for my rose 🌹</div>
+            </div>
+        </div>
+
+        <!-- Message Card -->
+        <div class="message-card">
+            <p class="dear">My Dearest Vanu 🐱,</p>
+            <p class="message">
+                You know what's better than a room full of kittens?
+                <br>
+                <span class="highlight">Nothing.</span> Except maybe... you. Okay fine, <span class="highlight">definitely</span> you. 😼
+                <br><br>
+                If we were cats, I'd share my favorite sunny spot with you.
+                I'd headbutt you gently to say "I love you."
+                I'd purr every time you walked into the room.
+                <br><br>
+                But since we're humans who <span class="highlight">think</span> we're cats...
+                here's a virtual rose from your favorite cat-o. 🌹
+                <br><br>
+                You're not just the love of my life — you're my <span class="highlight">purrfect</span> match,
+                my favorite person to be weird with, and the cutest kitten in any room.
+                <br><br>
+                This is just Day 1 of something special coming your way this week.
+                Stay curious, kitty. 🐾💕
+            </p>
+            <p class="from">Forever your Cat-o, Dehit 🐱♥</p>
+        </div>
+
+        <!-- Cat Divider -->
+        <div class="cat-divider">
+            <div class="line"></div>
+            <div class="cat-face">😺</div>
+            <div class="line"></div>
+        </div>
+
+        <!-- Photo Section -->
+        <div class="photo-section">
+            <p class="photo-section-title">the two cat-os 🐱🐱</p>
+            <div class="photo-frame">
+                <!-- Replace the placeholder below with: <img src="photo.jpg" alt="Us"> -->
+                <div class="photo-placeholder">
+                    Your photo together goes here 💕<br><br>
+                    <small>(upload photo.jpg to this repo)</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- More kitten circles -->
+        <div class="kitten-row-2">
+            <div class="kitten-round">
+                <img src="https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_640.jpg" alt="Cute cat" loading="lazy">
+            </div>
+            <div class="kitten-round">
+                <img src="https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_640.jpg" alt="Adorable kitten" loading="lazy">
+            </div>
+            <div class="kitten-round">
+                <img src="https://cdn.pixabay.com/photo/2023/04/07/11/51/kitten-7905745_640.jpg" alt="Sleepy kitten" loading="lazy">
+            </div>
+            <div class="kitten-round">
+                <img src="https://cdn.pixabay.com/photo/2024/01/29/20/40/cat-8540772_640.jpg" alt="Playful cat" loading="lazy">
+            </div>
+        </div>
+
+        <!-- Heartbeat Divider -->
+        <div class="heartbeat-line"></div>
+
+        <!-- Bottom Section -->
+        <div class="bottom-section">
+            <p class="bottom-quote">
+                "In a world full of people, my favorite person to do nothing with is you." 🐾
+            </p>
+            <div class="cat-footer">🐱 🌹 🐱</div>
+        </div>
+    </div>
+
+    <script>
+        // Create falling paw prints and petals
+        function createPaw() {
+            const paw = document.createElement('div');
+            const isPetal = Math.random() > 0.5;
+
+            if (isPetal) {
+                paw.classList.add('petal');
+                const size = Math.random() * 12 + 10;
+                paw.style.width = size + 'px';
+                paw.style.height = size + 'px';
+            } else {
+                paw.classList.add('paw');
+                const paws = ['🐾', '🐾', '🌹', '💕', '🐱'];
+                paw.textContent = paws[Math.floor(Math.random() * paws.length)];
+                const size = Math.random() * 10 + 14;
+                paw.style.fontSize = size + 'px';
+            }
+
+            paw.style.left = Math.random() * window.innerWidth + 'px';
+            paw.style.animationDuration = (Math.random() * 6 + 6) + 's';
+            paw.style.animationDelay = (Math.random() * 2) + 's';
+
+            document.body.appendChild(paw);
+            setTimeout(() => paw.remove(), 14000);
+        }
+
+        // Create sparkles
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            sparkle.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            const size = Math.random() * 3 + 2;
+            sparkle.style.width = size + 'px';
+            sparkle.style.height = size + 'px';
+            sparkle.style.boxShadow = `0 0 ${size * 2}px rgba(255,255,255,0.7)`;
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 4000);
+        }
+
+        // Generate effects
+        setInterval(createPaw, 500);
+        setInterval(createSparkle, 350);
+
+        // Initial burst
+        for (let i = 0; i < 12; i++) {
+            setTimeout(createPaw, i * 250);
+        }
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createSparkle, i * 120);
+        }
+    </script>
+</body>
+</html>
